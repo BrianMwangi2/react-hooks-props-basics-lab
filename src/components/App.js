@@ -1,20 +1,26 @@
+
 import React from "react";
 import NavBar from "./NavBar";
 import Home from "./Home";
 import About from "./About";
 
-// pass this data down as props to the child component(s) that need it!
+// Import user data from external file
 import user from "../data/user";
-console.log(user);
 
 function App() {
+  const { name, age, city, github, linkedin, bio } = user; // Destructure user object
+
   return (
     <div>
       <NavBar />
-      <Home />
-      <About />
+      {/* Pass user data to Home component */}
+      <Home name={name} age={age} city={city} />
+      
+      {/* Pass bio, github, and linkedin props to About component */}
+      <About bio={bio} githubUrl={github} linkedinUrl={linkedin} />
     </div>
   );
 }
 
 export default App;
+
